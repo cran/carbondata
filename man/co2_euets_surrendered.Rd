@@ -28,8 +28,12 @@ require the EUTL transaction log ZIP, which is deferred to v0.2.0
 because it is ~1.5 GB uncompressed and requires LZMA extraction.
 }
 \examples{
-\dontrun{
-comp <- co2_euets_surrendered(country = "FR")
+\donttest{
+op <- options(carbondata.cache_dir = tempdir())
+try({
+  comp <- co2_euets_surrendered(country = "FR")
+})
+options(op)
 }
 }
 \seealso{

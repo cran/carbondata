@@ -17,8 +17,12 @@ Fetches the California Cap-and-Trade program overall cap and
 allocation channels, by vintage year.
 }
 \examples{
-\dontrun{
-caps <- co2_california_caps()
+\donttest{
+op <- options(carbondata.cache_dir = tempdir())
+try({
+  caps <- co2_california_caps()
+})
+options(op)
 }
 }
 \seealso{

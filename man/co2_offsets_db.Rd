@@ -4,14 +4,24 @@
 \alias{co2_offsets_db}
 \title{CarbonPlan OffsetsDB (via S3 parquet)}
 \usage{
-co2_offsets_db(kind = c("projects", "credits"), date = NULL, refresh = FALSE)
+co2_offsets_db(
+  kind = c("projects", "credits"),
+  date = NULL,
+  max_lookback = 180L,
+  refresh = FALSE
+)
 }
 \arguments{
 \item{kind}{Character. \code{"projects"} (default) or \code{"credits"}.}
 
-\item{date}{Optional character. ISO date of the snapshot to fetch
-(must be a day CarbonPlan published; the function walks backwards
-from this date up to 7 days). Default \code{Sys.Date()}.}
+\item{date}{Optional character. ISO date of the snapshot to fetch.
+The function walks backwards from this date to find a published
+snapshot. Default \code{Sys.Date()}.}
+
+\item{max_lookback}{Integer. How many days to walk back before
+giving up. Default 180, because CarbonPlan's publication cadence
+became irregular during 2026 and the last snapshot seen was
+1 June 2026.}
 
 \item{refresh}{Re-download? Default \code{FALSE}.}
 }
@@ -32,9 +42,15 @@ reading requires an installed Parquet reader; the \code{arrow}
 package is the recommended suggest.
 }
 \examples{
-\dontrun{
-path <- co2_offsets_db("projects")
-df <- arrow::read_parquet(path)
+\donttest{
+op <- options(carbondata.cache_dir = tempdir())
+try({
+  path <- co2_offsets_db("projects")
+  if (requireNamespace("arrow", quietly = TRUE)) {
+  df <- arrow::read_parquet(path)
+  }
+})
+options(op)
 }
 }
 \seealso{

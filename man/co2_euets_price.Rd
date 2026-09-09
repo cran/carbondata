@@ -24,8 +24,12 @@ the EEX public auction report. Auctions are held several times per
 week; each year's file accumulates all auctions for that year.
 }
 \examples{
-\dontrun{
-prices <- co2_euets_price(year = 2025)
+\donttest{
+op <- options(carbondata.cache_dir = tempdir())
+try({
+  prices <- co2_euets_price(year = 2025)
+})
+options(op)
 }
 }
 \seealso{

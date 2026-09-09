@@ -4,9 +4,17 @@
 \alias{co2_vrod}
 \title{Berkeley Voluntary Registry Offsets Database}
 \usage{
-co2_vrod(refresh = FALSE)
+co2_vrod(sheet = "PROJECTS", refresh = FALSE)
 }
 \arguments{
+\item{sheet}{Character. Which workbook sheet to read. \code{"PROJECTS"}
+(default) is the project register and the only sheet that is a
+tidy table: it is parsed properly, with the header row located and
+tally rows dropped. The workbook's other sheets are charts,
+documentation, and drop-down lookups rather than datasets; naming
+one reads it verbatim and you get whatever layout it happens to
+have.}
+
 \item{refresh}{Re-download? Default \code{FALSE}. Each release has a
 date-stamped filename; the package scrapes the landing page to
 find the latest release on each call unless a cached copy exists.}
@@ -21,8 +29,12 @@ project registrations and issuances. Released bimonthly under
 CC BY 4.0.
 }
 \examples{
-\dontrun{
-vrod <- co2_vrod()
+\donttest{
+op <- options(carbondata.cache_dir = tempdir())
+try({
+  vrod <- co2_vrod()
+})
+options(op)
 }
 }
 \seealso{
