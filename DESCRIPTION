@@ -1,7 +1,7 @@
 Package: carbondata
 Title: Access Carbon Market Data from Emissions Trading Systems and
         Voluntary Registries
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: 
     person("Charles", "Coverdale", , "charlesfcoverdale@gmail.com", role = c("aut", "cre"))
 Description: Unified access to carbon market data from compliance
@@ -21,7 +21,6 @@ Depends: R (>= 4.1.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en-US
-RoxygenNote: 7.3.3
 Imports: cli (>= 3.6.0), httr2 (>= 1.0.0), jsonlite, readxl, tools,
         utils
 Suggests: arrow, nanoparquet, testthat (>= 3.0.0), writexl
@@ -29,9 +28,10 @@ Config/testthat/edition: 3
 URL: https://charlescoverdale.github.io/carbondata/,
         https://github.com/charlescoverdale/carbondata
 BugReports: https://github.com/charlescoverdale/carbondata/issues
+Config/roxygen2/version: 8.1.0
 NeedsCompilation: no
-Packaged: 2026-09-09 10:07:21 UTC; charlescoverdale
+Packaged: 2026-11-01 14:09:40 UTC; charlescoverdale
 Author: Charles Coverdale [aut, cre]
 Maintainer: Charles Coverdale <charlesfcoverdale@gmail.com>
 Repository: CRAN
-Date/Publication: 2026-09-09 10:40:26 UTC
+Date/Publication: 2026-11-01 16:30:08 UTC
